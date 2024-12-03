@@ -35,16 +35,16 @@ class ProcurarUsuarioController {
           `;
 
           // Executa a consulta
-          const [response] = await connection.query(queryString, [id_usuario]);
+          const [datas] = await connection.query(queryString, [id_usuario]);
 
           // Verifica se o usuário foi encontrado
-          if (response.length === 0) {
+          if (datas.length === 0) {
               console.log("Usuário não encontrado");
               return res.status(404).json({ success: false, message: "Usuário não encontrado" });
           }
 
           // Retorna o usuário encontrado
-          return res.status(200).json({ success: true, data: response });
+          return res.status(200).json({ success: true, response: datas });
       } catch (error) {
           console.error("Houve um erro: ", error);
           return res.status(500).json({ success: false, message: "Por favor, tente mais tarde" });

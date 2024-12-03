@@ -15,7 +15,7 @@ app.use("/app", UsuarioRotas)
 app.use((req, res, next) => {
     next()
     console.error("Rota não encontrada")
-    return res.status(404).json({message: "Houve um erro, por favor tente mais tarde"})
+    return res.status(404).json({message: "Houve um erro,estamos tentando encontrar esta página por favor tente novamente"})
 
 })
 
